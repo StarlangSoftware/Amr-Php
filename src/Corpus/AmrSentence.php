@@ -9,11 +9,7 @@ use olcaytaner\XmlParser\XmlDocument;
 class AmrSentence extends Sentence
 {
     private array $connections;
-    private FileDescription $fileDescription {
-        get {
-            return $this->fileDescription;
-        }
-    }
+    private FileDescription $fileDescription;
 
     public function __construct(string $path, string $fileName){
         $this->fileDescription = new FileDescription($path, $fileName);
@@ -79,6 +75,11 @@ class AmrSentence extends Sentence
 
     public function connectionCount(): int{
         return count($this->connections);
+    }
+
+    public function getFileDescription(): FileDescription
+    {
+        return $this->fileDescription;
     }
 
     public function addConnection(AmrWord $from, AmrWord $to, string $with): void{
